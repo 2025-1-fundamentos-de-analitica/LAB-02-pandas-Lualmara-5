@@ -10,9 +10,9 @@ def pregunta_11():
     import pandas as pd
 
     df = pd.read_csv("files/input/tbl1.tsv", sep="\t")
-    
+
     resultado = df.groupby("c0")["c4"].apply(lambda x: ",".join(str(i) for i in sorted(x)))
-    return resultado.to_frame()
+    return resultado.reset_index()
 
 """
 Construya una tabla que contenga `c0` y una lista separada por ',' de

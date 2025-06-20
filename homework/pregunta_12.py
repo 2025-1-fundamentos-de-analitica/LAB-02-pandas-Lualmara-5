@@ -10,10 +10,11 @@ def pregunta_12():
     import pandas as pd
 
     df = pd.read_csv("files/input/tbl2.tsv", sep="\t")
-    
+
     df["clave_valor"] = df["c5a"] + ":" + df["c5b"].astype(str)
     resultado = df.groupby("c0")["clave_valor"].apply(lambda x: ",".join(sorted(x)))
-    return resultado.to_frame()
+
+    return resultado.reset_index().rename(columns={"clave_valor": "c5"})
 
 """
 Construya una tabla que contenga `c0` y una lista separada por ','
